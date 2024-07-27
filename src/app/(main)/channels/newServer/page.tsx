@@ -1,10 +1,13 @@
-import { InitServerCompo } from '@/components/custom/InitServerCompo'
-import React from 'react'
 
-const page = () => {
+import CreateChannel from '@/components/custom/CreateChannel';
+import React from 'react';
+
+const Page = () => {
   return (
-    <InitServerCompo />
-  )
-}
+    <>
+      <CreateChannel />
+    </>
+  );
+};
 
-export default page
+export default Page;

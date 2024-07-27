@@ -47,7 +47,7 @@ const NaveBarServer = () => {
   }
 
   return (
-    <ScrollArea className=" rounded-md border">
+    <ScrollArea className=" rounded-md border h-[450px] bg-fixed no-scrollbar overflow-auto  w-full">
       <div>
       {servers.map((server: any) => (
         <div className="flex justify-between items-center rounded-sm">
@@ -56,7 +56,7 @@ const NaveBarServer = () => {
           )}>
            
           </div>
-          <div key={server.id} style={{ position: 'relative', height: '50px' }} className="top-3 rounded-full mr-1 mt-1 mb-2  w-14 h-14 overflow-hidden"
+          <div key={server.id} style={{ position: 'relative', height: '50px' }} className="top-3 rounded-full mr-1 mt-1 mb-2 w-14 h-14 overflow-hidden"
             onClick={()=>{
               router.push(`/channels/${server.id}`)
             }}
