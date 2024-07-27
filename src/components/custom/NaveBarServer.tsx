@@ -43,7 +43,7 @@ const NaveBarServer = () => {
 
   if (error) {
     console.error(error);
-    return <div>Error: {error}</div>;
+    return null;
   }
 
   return (

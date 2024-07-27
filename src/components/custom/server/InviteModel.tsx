@@ -33,7 +33,7 @@ export function InviteModel({ serverName, inviteCode }: { serverName: string, in
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <button>Invite People</button>
+                <button className=" w-full">Invite People</button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -59,9 +59,8 @@ export function InviteModel({ serverName, inviteCode }: { serverName: string, in
                     <Button variant="link" onClick={async () => {
                         setLoader(true)
                         const zehahaha = await UpdateVerificationCode(param.channelsId);
-                        console.log(zehahaha)
                         if (zehahaha !== false) {
-                            setCurrentInviteCode(zehahaha?.invitationCode as string)
+                            setCurrentInviteCode(zehahaha?.invitationCode   )
                         }
                         setLoader(false)
                     }}>Generate a new link</Button>

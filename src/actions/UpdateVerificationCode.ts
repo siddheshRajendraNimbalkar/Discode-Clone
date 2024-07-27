@@ -1,11 +1,17 @@
 'use server'
 
 import db from '@/lib/db'
+import { redirect } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
+import currentUser from './currentUser';
 
-const UpdateVerificationCode = (params:any) => {
+const UpdateVerificationCode = async(params:any) => {
     try {
-        const server = db.server.update({
+        const profile = await currentUser();
+        if(!profile){
+            redirect('/')
+        }
+        const server = await db.server.update({
             where:{
                 id:params
             },

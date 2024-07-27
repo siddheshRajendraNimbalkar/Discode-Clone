@@ -29,7 +29,7 @@ const ServerHeader = ({ server, role }: ServerProp) => {
                 {isAdmin || isModerator 
                 ? 
                     <DropdownMenuItem className='hover:bg-indigo-600 cursor-pointer text-indigo-700 w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="" onClick={(e)=>{
+                        <div className="w-full" onClick={(e)=>{
                             e.preventDefault()
                             }}> <InviteModel serverName={server?.name} inviteCode={server.invitationCode}/></div>
                         <div className=""> <UserPlus className='h-6 w-4 ml-auto' /> </div>
