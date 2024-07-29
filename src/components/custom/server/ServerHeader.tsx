@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { ChevronDown, LogOut, PlusCircle, Settings, Trash, UserPlus, Users } from 'lucide-react';
 import InviteModel from './InviteModel';
+import ServerSetting from './ServerSetting';
 
 interface ServerProp {
     server: ServerWithProfile,
@@ -38,7 +39,9 @@ const ServerHeader = ({ server, role }: ServerProp) => {
                 {
                     isAdmin?
                     <DropdownMenuItem className=' cursor-pointer w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="">Server Setting</div>
+                        <div className="" onClick={(e)=>{
+                            e.preventDefault()
+                        }}><ServerSetting serverId={server.id} serverName={server.name} imageUrl={server.imageUrl} /></div>
                         <div className=""> <Settings className='h-6 w-4 ml-auto'/> </div>
                     </DropdownMenuItem>
                 :null

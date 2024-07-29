@@ -53,13 +53,10 @@ const NaveBar = async ({ serverID, userId }: ServerNavBAr) => {
 
     let role = null;
      server.member.find((member)=>{
-        console.log(member.profileId)
         if(member.profileId === userId){
             role = member.role
         }
     });
-
-    console.log(role)
     return (
         <>
             <div>

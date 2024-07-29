@@ -5,7 +5,7 @@ import { useEdgeStore } from '@/lib/edgestore';
 import { useState } from 'react';
 import { Button } from '../ui/button';
 
-export function SingleImageDropzoneUsage({values,onChange}:{values:any,onChange:(file:File|undefined|string)=>void}) {
+export function SingleImageDropzoneUsage({values,onChange}:{values:any,onChange:(file:File|undefined|string|any)=>void}) {
   const [file, setFile] = useState<File>();
   const { edgestore } = useEdgeStore();
   const [mystyle,setMystyle] = useState<Number>(0);
@@ -19,7 +19,7 @@ export function SingleImageDropzoneUsage({values,onChange}:{values:any,onChange:
         value={file}
         onChange={(file) => {
           setFile(file);
-          onChange(file)
+          onChange(values)
         }}
       />
       <div className={`h-4 mt1 mb-1 rounded-sm p-1 ${display ? 'block' : 'hidden'}`}>

@@ -33,7 +33,7 @@ export function InviteModel({ serverName, inviteCode }: { serverName: string, in
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <button className=" w-full">Invite People</button>
+                <button className=" w-full flex justify-start">Invite People</button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -58,7 +58,7 @@ export function InviteModel({ serverName, inviteCode }: { serverName: string, in
                 <DialogFooter>
                     <Button variant="link" onClick={async () => {
                         setLoader(true)
-                        const zehahaha = await UpdateVerificationCode(param.channelsId);
+                        const zehahaha : any = await UpdateVerificationCode(param.channelsId);
                         if (zehahaha !== false) {
                             setCurrentInviteCode(zehahaha?.invitationCode   )
                         }
