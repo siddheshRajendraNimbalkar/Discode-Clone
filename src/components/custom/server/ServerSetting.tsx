@@ -63,7 +63,7 @@ function ServerSetting({ serverId, serverName, imageUrl }: ServerInfo) {
             <DialogTrigger asChild>
                 <div>
 
-                    <button>Server Settings</button>
+                    <button className="w-full flex justify-start">Server Settings</button>
                 </div>
             </DialogTrigger>
             <DialogContent >

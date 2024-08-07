@@ -9,6 +9,9 @@ import {
 import { ChevronDown, LogOut, PlusCircle, Settings, Trash, UserPlus, Users } from 'lucide-react';
 import InviteModel from './InviteModel';
 import ServerSetting from './ServerSetting';
+import {ManageMembers} from './ManageMembers';
+import CreateChannel from '../CreateChannel';
+import { CreateGroup } from './CreateGroup';
 
 interface ServerProp {
     server: ServerWithProfile,
@@ -39,7 +42,7 @@ const ServerHeader = ({ server, role }: ServerProp) => {
                 {
                     isAdmin?
                     <DropdownMenuItem className=' cursor-pointer w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="" onClick={(e)=>{
+                        <div className="w-full" onClick={(e)=>{
                             e.preventDefault()
                         }}><ServerSetting serverId={server.id} serverName={server.name} imageUrl={server.imageUrl} /></div>
                         <div className=""> <Settings className='h-6 w-4 ml-auto'/> </div>
@@ -49,7 +52,9 @@ const ServerHeader = ({ server, role }: ServerProp) => {
                  {
                     isAdmin?
                     <DropdownMenuItem className=' cursor-pointer w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="">Manage Members</div>
+                        <div className="w-full" onClick={(e)=>{
+                            e.preventDefault()
+                        }}><ManageMembers serverId={server.id} members={server.member} /></div>
                         <div className=""> <Users className='h-6 w-4 ml-auto' /> </div>
                     </DropdownMenuItem>
                 :null
@@ -57,7 +62,7 @@ const ServerHeader = ({ server, role }: ServerProp) => {
                {isAdmin || isModerator 
                 ? 
                     <DropdownMenuItem className='w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="">Create Channel</div>
+                        <div className="w-full" onClick={(e)=>{e.preventDefault()}}><CreateGroup /></div>
                         <div className=""> <PlusCircle className='h-6 w-4 ml-auto'/> </div>
                     </DropdownMenuItem>
                 :null }
