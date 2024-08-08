@@ -9,9 +9,11 @@ import {
 import { ChevronDown, LogOut, PlusCircle, Settings, Trash, UserPlus, Users } from 'lucide-react';
 import InviteModel from './InviteModel';
 import ServerSetting from './ServerSetting';
-import {ManageMembers} from './ManageMembers';
+import { ManageMembers } from './ManageMembers';
 import CreateChannel from '../CreateChannel';
 import { CreateGroup } from './CreateGroup';
+import { DeleteChannel } from './DeleteChannel';
+import { LeaveChannel } from './LeaveChannel';
 
 interface ServerProp {
     server: ServerWithProfile,
@@ -30,65 +32,65 @@ const ServerHeader = ({ server, role }: ServerProp) => {
                 </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-[200px] border-none'>
-                {isAdmin || isModerator 
-                ? 
+                {isAdmin || isModerator
+                    ?
                     <DropdownMenuItem className='hover:bg-indigo-600 cursor-pointer text-indigo-700 w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="w-full" onClick={(e)=>{
+                        <div className="w-full" onClick={(e) => {
                             e.preventDefault()
-                            }}> <InviteModel serverName={server?.name} inviteCode={server.invitationCode}/></div>
+                        }}> <InviteModel serverName={server?.name} inviteCode={server.invitationCode} /></div>
                         <div className=""> <UserPlus className='h-6 w-4 ml-auto' /> </div>
                     </DropdownMenuItem>
-                :null }
+                    : null}
                 {
-                    isAdmin?
-                    <DropdownMenuItem className=' cursor-pointer w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="w-full" onClick={(e)=>{
-                            e.preventDefault()
-                        }}><ServerSetting serverId={server.id} serverName={server.name} imageUrl={server.imageUrl} /></div>
-                        <div className=""> <Settings className='h-6 w-4 ml-auto'/> </div>
-                    </DropdownMenuItem>
-                :null
+                    isAdmin ?
+                        <DropdownMenuItem className=' cursor-pointer w-full h-8 flex flex-coln justify-between items-center'>
+                            <div className="w-full" onClick={(e) => {
+                                e.preventDefault()
+                            }}><ServerSetting serverId={server.id} serverName={server.name} imageUrl={server.imageUrl} /></div>
+                            <div className=""> <Settings className='h-6 w-4 ml-auto' /> </div>
+                        </DropdownMenuItem>
+                        : null
                 }
-                 {
-                    isAdmin?
-                    <DropdownMenuItem className=' cursor-pointer w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="w-full" onClick={(e)=>{
-                            e.preventDefault()
-                        }}><ManageMembers serverId={server.id} members={server.member} /></div>
-                        <div className=""> <Users className='h-6 w-4 ml-auto' /> </div>
-                    </DropdownMenuItem>
-                :null
+                {
+                    isAdmin ?
+                        <DropdownMenuItem className=' cursor-pointer w-full h-8 flex flex-coln justify-between items-center'>
+                            <div className="w-full" onClick={(e) => {
+                                e.preventDefault()
+                            }}><ManageMembers serverId={server.id} members={server.member} /></div>
+                            <div className=""> <Users className='h-6 w-4 ml-auto' /> </div>
+                        </DropdownMenuItem>
+                        : null
                 }
-               {isAdmin || isModerator 
-                ? 
+                {isAdmin || isModerator
+                    ?
                     <DropdownMenuItem className='w-full h-8 flex flex-coln justify-between items-center'>
-                        <div className="w-full" onClick={(e)=>{e.preventDefault()}}><CreateGroup /></div>
-                        <div className=""> <PlusCircle className='h-6 w-4 ml-auto'/> </div>
+                        <div className="w-full" onClick={(e) => { e.preventDefault() }}><CreateGroup serverId={server.id} /></div>
+                        <div className=""> <PlusCircle className='h-6 w-4 ml-auto' /> </div>
                     </DropdownMenuItem>
-                :null }
-                {isAdmin || isModerator 
-                ? 
+                    : null}
+                {isAdmin || isModerator
+                    ?
                     <DropdownMenuSeparator></DropdownMenuSeparator>
-                :null }
+                    : null}
 
-                {isAdmin?
+                {isAdmin ?
                     <DropdownMenuItem className='text-red-800 w-full h-8 flex flex-coln justify-between items-center'>
-                    <div className="">Delete Channel</div>
-                    <div className=""> <Trash className='h-6 w-4 ml-auto' /> </div>
-                </DropdownMenuItem>
-                : null
+                        <div className="w-full" onClick={(e) => { e.preventDefault() }}><DeleteChannel serverId={server.id} /> </div>
+                        <div className=""> <Trash className='h-6 w-4 ml-auto' /> </div>
+                    </DropdownMenuItem>
+                    : null
                 }
                 {
                     !isAdmin && <DropdownMenuSeparator></DropdownMenuSeparator>
                 }
 
-                {!isAdmin?
-                    
+                {!isAdmin ?
+
                     <DropdownMenuItem className='text-red-800 w-full h-8 flex flex-coln justify-between items-center'>
-                    <div className="">Leave</div>
-                    <div className=""> <LogOut className='h-6 w-4 ml-auto' /> </div>
-                </DropdownMenuItem>
-                : null
+                        <div className="w-full" onClick={(e)=>{e.preventDefault()}}><LeaveChannel serverId={server.id}/> </div>
+                        <div className=""> <LogOut className='h-6 w-4 ml-auto' /> </div>
+                    </DropdownMenuItem>
+                    : null
                 }
             </DropdownMenuContent>
         </DropdownMenu>

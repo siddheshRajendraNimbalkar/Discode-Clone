@@ -33,6 +33,7 @@ import {
 
 import { ChannelType } from "@prisma/client"
 import { toast } from "@/components/ui/use-toast"
+import createGroup from "@/actions/createGroup"
 
 const FormSchema = z.object({
   name: z.string().min(2, {
@@ -45,7 +46,7 @@ const FormSchema = z.object({
   type: z.nativeEnum(ChannelType)
 })
 
-export function CreateGroup() {
+export function CreateGroup({serverId}:{serverId:string}) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -115,8 +116,19 @@ export function CreateGroup() {
             form.setError('name',{
               message:"Channel Name Can't be [general]"
             })
-
+            return
           }
+          const name = form.getValues().name;
+          const type = form.getValues().type;
+          
+         const res = await createGroup({serverId,name,type})
+         if(res.success == true){
+          
+         }else{
+          console.log(res.success)
+          console.log(res.message)
+         }
+
         }}>Submit</Button>
       </DialogContent>
     </Dialog>
