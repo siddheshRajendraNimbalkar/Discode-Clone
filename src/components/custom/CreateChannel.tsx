@@ -48,29 +48,28 @@ function CreateChannel() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         const response = await createServer(values);
-    
+
         if (!response.success) {
             console.log("something went wrong");
         } else {
             form.reset();
-            await router.push(`/channels/${response.id}`);
-            window.location.reload();
+            router.push(`/channels/${response.id}`);
         }
     }
 
     return (
         <Dialog >
-             <DialogTrigger asChild>
-             <div>
-             <Image
-          src="/discord-icon-256x256-w6icqf4y.webp"
-          width={50}
-          height={50}
-          alt="Picture of the author"
-        />
-        <Button>Create Server</Button>
-             </div>
-      </DialogTrigger>
+            <DialogTrigger asChild>
+                <div>
+                    <Image
+                        src="/discord-icon-256x256-w6icqf4y.webp"
+                        width={50}
+                        height={50}
+                        alt="Picture of the author"
+                    />
+                    <Button>Create Server</Button>
+                </div>
+            </DialogTrigger>
             <DialogContent >
                 <DialogHeader>
                     <DialogTitle className=" flex justify-center text-2xl">
