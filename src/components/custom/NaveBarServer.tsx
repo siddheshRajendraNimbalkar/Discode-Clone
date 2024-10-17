@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { findUserServer } from "@/actions/findUserServer";
 import Image from "next/image";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useParams, useRouter } from "next/navigation";
 import { NaveTooll } from "./NaveTooll";
