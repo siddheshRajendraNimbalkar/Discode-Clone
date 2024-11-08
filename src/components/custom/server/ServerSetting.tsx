@@ -48,8 +48,8 @@ function ServerSetting({ serverId, serverName, imageUrl }: ServerInfo) {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            name: "",
-            imageUrl: ""
+            name: serverName,
+            imageUrl: imageUrl
         },
     });
 
@@ -62,7 +62,6 @@ function ServerSetting({ serverId, serverName, imageUrl }: ServerInfo) {
         <Dialog >
             <DialogTrigger asChild>
                 <div>
-
                     <button className="w-full flex justify-start">Server Settings</button>
                 </div>
             </DialogTrigger>
@@ -85,7 +84,7 @@ function ServerSetting({ serverId, serverName, imageUrl }: ServerInfo) {
                                 <FormItem className="flex flex-col items-center">
                                     <FormLabel>Image</FormLabel>
                                     <FormControl>
-                                        <UpdateImageDropzoneUsage values={imageUrl} onChange={field.onChange} />
+                                        <UpdateImageDropzoneUsage values={field.value} onChange={field.onChange} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -112,11 +111,10 @@ function ServerSetting({ serverId, serverName, imageUrl }: ServerInfo) {
                        const response = await updateServerProfile(form.getValues(),serverId)
                        if (!response.sucess) {
                         console.log("something went wrong");
-                    } else {
-                        form.reset();
-                        window.location.reload();
-                        
-                    }
+                        } else {
+                            form.reset();
+                            window.location.reload();
+                        }
                     }}>Submit</Button>
             </DialogContent>
         </Dialog>

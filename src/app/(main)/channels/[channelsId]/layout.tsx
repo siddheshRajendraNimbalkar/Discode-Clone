@@ -16,12 +16,12 @@ const layout = async({children,params}:{children:React.ReactNode,params:{channel
     }
 
   return (
-   <div className="h-full flex">
-    <div className="hidden md:flex h-full bg-[#f0f0f3] dark:bg-[#2B2C30] w-60">
+   <div className="h-[100vh] flex">
+    <div className="hidden md:flex h-[100vh] bg-[#f0f0f3] dark:bg-[#2B2C30] w-60">
       <NaveBar serverID={params.channelsId} userId={server?.userId}/>
       {/* {server.userId} */}
     </div>
-    <main className="h-full w-[100%] md-pl-60 bg-[#000101]">
+    <main className="h-[100vh] w-[100%] md-pl-60 bg-[#000101]">
     {children}
     </main>
    </div>

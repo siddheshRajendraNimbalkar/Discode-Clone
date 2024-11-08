@@ -34,6 +34,7 @@ import {
 import { ChannelType } from "@prisma/client"
 import { toast } from "@/components/ui/use-toast"
 import createGroup from "@/actions/createGroup"
+import { useRouter } from "next/navigation"
 
 const FormSchema = z.object({
   name: z.string().min(2, {
@@ -55,7 +56,7 @@ export function CreateGroup({serverId}:{serverId:string}) {
     },
   })
 
-
+  const router = useRouter();
 
   return (
 
@@ -123,7 +124,7 @@ export function CreateGroup({serverId}:{serverId:string}) {
           
          const res = await createGroup({serverId,name,type})
          if(res.success == true){
-          
+            router.refresh();
          }else{
           console.log(res.success)
           console.log(res.message)

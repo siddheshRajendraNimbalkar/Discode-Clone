@@ -13,6 +13,7 @@ import {
 import Image from 'next/image'
 import deleteServer from "@/actions/deleteServer"
 import { useRouter } from 'next/navigation'
+import NaveCreateServer from "../NaveCreateServer"
 
 export function DeleteChannel({ serverId }: { serverId: string }) { 
     const router = useRouter()
@@ -35,6 +36,7 @@ export function DeleteChannel({ serverId }: { serverId: string }) {
                 <Button className="bg-red-800" onClick={async () => {
                     const res = await deleteServer({serverId});
                     if(res.success){
+                        window.location.reload();
                         router.push('/channels')
                     }
                 }}>Delete</Button>

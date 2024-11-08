@@ -20,6 +20,8 @@ const updateServerProfile = async (data: { name: string; imageUrl: string },serv
     },
   })
 
+  console.log(updateServer)
+
   if(!updateServer){
     return {sucess:false}
    }

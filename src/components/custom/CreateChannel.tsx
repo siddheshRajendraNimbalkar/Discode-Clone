@@ -53,7 +53,8 @@ function CreateChannel() {
             console.log("something went wrong");
         } else {
             form.reset();
-            router.push(`/channels/${response.id}`);
+            router.push(`/channels/${response.id}`)
+            window.location.reload();
         }
     }
 
